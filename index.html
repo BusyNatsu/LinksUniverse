@@ -36,21 +36,33 @@
 </head>
 <body>
 <div class="login-container">
-    <h2>Login</h2>
+    <h2>Welcome To Nathan's Website please login using the provided credentials</h2>
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
     <button onclick="login()">Login</button>
 </div>
 <script>
-function login() {
-    const user = document.getElementById('username').value;
-    const pass = document.getElementById('password').value;
-    // Simple hardcoded credentials
-    if(user === "admin" && pass === "1234") {
-        localStorage.setItem("loggedIn", "true");
-        window.location.href = "homepage.html"; // Redirect to main page
+async function hashPassword(password) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function login() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    const hashedPassword = await hashPassword(password);
+
+    // Compare hashed password with stored hash
+    const storedHash = '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'; // hash of "1234"
+    if (username === 'admin' && hashedPassword === storedHash) {
+        localStorage.setItem('loggedIn', 'true');
+        window.location.href = 'homepage.html';
     } else {
-        alert("Invalid credentials");
+        alert('Invalid credentials');
     }
 }
 </script>
