@@ -57,8 +57,8 @@ async function login() {
     const hashedPassword = await hashPassword(password);
 
     // Compare hashed password with stored hash
-    const storedHash = '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'; // hash of "1234"
-    if (username === 'admin' && hashedPassword === storedHash) {
+    const storedHash = '2b5d2ba5803e6fe3a2bc08b5f3965f47a92918a9c44b8090618d5d5a2876cf8c'; // hash of "***71"
+    if (username === 'TryHackMe' && hashedPassword === storedHash) {
         localStorage.setItem('loggedIn', 'true');
         window.location.href = 'homepage.html';
     } else {
