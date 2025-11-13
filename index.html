@@ -36,7 +36,7 @@
 </head>
 <body>
 <div class="login-container">
-    <h2>Welcome To Nathan's Website please login using the provided credentials</h2>
+    <h2>Welcome To Nathan's Web2 please login using the provided credentials</h2>
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
     <button onclick="login()">Login</button>
@@ -57,8 +57,8 @@ async function login() {
     const hashedPassword = await hashPassword(password);
 
     // Compare hashed password with stored hash
-    const storedHash = '2b5d2ba5803e6fe3a2bc08b5f3965f47a92918a9c44b8090618d5d5a2876cf8c'; // hash of "***71"
-    if (username === 'TryHackMe' && hashedPassword === storedHash) {
+    const storedHash = '17ea429e55ddbe65a1e05f66ea70851ad28e5612448f735a1867c2106eb5ae4a'; // hash of "***71"
+    if (username === 'tryhackme' && hashedPassword === storedHash) {
         localStorage.setItem('loggedIn', 'true');
         window.location.href = 'homepage.html';
     } else {
