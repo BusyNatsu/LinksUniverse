@@ -13,6 +13,21 @@
             background-repeat: repeat;
             background-attachment: fixed;
 			animation: moveBackground 10s linear infinite;
+
+			<h!</h1>
+<button onclick="logout()">Logout</button>
+
+<script>
+if(localStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "index.html"; // Redirect back to login
+}
+
+function logout() {
+    localStorage.removeItem("loggedIn");
+    window.location.href = "index.html";
+}
+</script>
+			
         }
 		
     @keyframes moveBackground {
@@ -438,6 +453,7 @@
  
 
 </html>
+
 
 
 
