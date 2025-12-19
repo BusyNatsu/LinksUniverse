@@ -1,71 +1,430 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background: #f4f4f4;
+  <!-- Basic SEO -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Consultancy — Study Abroad Made Simple</title>
+  <meta name="description" content="Personalized, friendly guidance for students aiming to study abroad. Explore destinations, services, and get a free consultation." />
+  https://www.example.com/
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Your Consultancy — Study Abroad Made Simple" />
+  <meta property="og:description" content="Personalized, friendly guidance for students aiming to study abroad." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.example.com/" />
+  <meta property="og:image" content="https://www.example.com/og-image.jpg" />
+
+  <!-- Favicon (replace paths) -->
+  /favicon.ico
+
+  <!-- Fonts (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="ot{
+      --bg:#ffffff;
+      --text:#1a1a1a;
+      --muted:#666666;
+      --primary:#2d6cdf;     /* brand primary */
+      --primary-ink:#0f2e6b; /* darker shade */
+      --accent:#1ecaa8;      /* secondary accent */
+      --surface:#f7f9fc;
+      --border:#e6eaf2;
+      --shadow:0 10px 20px rgba(16,24,40,0.08);
+      --radius:12px;
+      --radius-sm:8px;
+      --maxw:1100px;
     }
-    .login-container {
-        background: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        width: 300px;
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+    a{color:var(--primary);text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+
+    /* Layout */
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);z-index:100}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--primary-ink)}
+    .brand img{width:36px;height:36px;border-radius:50%}
+    .navlinks{display:flex;gap:18px;align-items:center}
+    .navlinks a{color:#0e1b3b;font-weight:600}
+    .cta-btn{background:var(--primary);color:#fff;padding:10px 16px;border-radius:999px;border:none;cursor:pointer}
+    .hamburger{display:none;background:none;border:none;padding:6px}
+
+    /* Hero */
+    .hero{background:linear-gradient(120deg,#f3f7ff 0%,#eefcf6 100%);padding:60px 0;border-bottom:1px solid var(--border)}
+    .hero-wrap{display:grid;grid-template-columns:1.1fr 0.9fr;gap:24px;align-items:center}
+    .hero h1{font-size:2.4rem;line-height:1.2;margin:0 0 12px}
+    .hero p{color:var(--muted);margin:0 0 20px}
+    .hero .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .badge{display:inline-flex;align-items:center;gap:8px;color:#0b3b2e;background:#dff7f0;border:1px solid #bfeee0;padding:6px 10px;border-radius:999px;font-weight:600}
+
+    /* Cards */
+    section{padding:50px 0}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:20px}
+    .section-head h2{margin:0;font-size:1.8rem}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .card .body{padding:16px}
+    .card h3{margin:0 0 8px;font-size:1.1rem}
+    .chip{display:inline-block;background:var(--surface);border:1px solid var(--border);padding:4px 10px;border-radius:999px;font-size:0.85rem;color:var(--muted)}
+
+    /* Services list */
+    .list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .li{display:flex;gap:10px;background:#fff;border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px;align-items:flex-start}
+    .li i{width:28px;height:28px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:700}
+
+    /* Testimonials */
+    .testimonial{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:18px}
+    .quote{font-style:italic}
+    .author{margin-top:10px;color:var(--muted);font-size:0.9rem}
+
+    /* Blog cards */
+    .blog-card .meta{color:var(--muted);font-size:0.9rem}
+
+    /* Contact */
+    .contact{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
+    form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    form .full{grid-column:1/-1}
+    label{display:block;font-weight:600;margin-bottom:6px}
+    input,select,textarea{width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;background:#fff}
+    textarea{min-height:120px}
+    .form-help{font-size:0.85rem;color:var(--muted)}
+    .submit{background:var(--accent);color:#043b31;border:none;padding:12px 16px;border-radius:10px;font-weight:700;cursor:pointer}
+
+    /* Footer */
+    footer{border-top:1px solid var(--border);padding:30px 0;color:var(--muted);background:#fff}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:20px}
+    .footer-grid a{color:inherit}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-wrap{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr 1fr}
+      .list{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
     }
-    input {
-        width: 100%;
-        margin: 10px 0;
-        padding: 10px;
+    @media (max-width: 640px){
+      .navlinks{display:none}
+      .hamburger{display:block}
+      .grid{grid-template-columns:1fr}
+      form{grid-template-columns:1fr}
     }
-    button {
-        width: 100%;
-        padding: 10px;
-        background: #007bff;
-        color: white;
-        border: none;
-        cursor: pointer }
-</style>
+  </style>
 </head>
+
 <body>
-<div class="login-container">
-    <h2>Welcome To Nathan's Web4 please login using the provided credentials</h2>
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">Login</button>
-</div>
-<script>
-async function hashPassword(password) {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(password);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-}
+  <!-- Header / Navigation -->
+  <header role="banner" aria-label="Main header">
+    <div class="container nav">
+      /
+        <img src="https://via.placeholder.com/72x72.png?text    <span>Your Consultancy</span>
+      </a>
+      <nav aria-label="Primary">
+        <button class="hamburger" aria-label="Open menu" onclick="toggleMenu()">
+          ☰
+        </button>
+        <div class="navlinks" id="navlinks">
+          #destinationsDestinations</a>
+          #servicesServices</a>
+          #testimonialsTestimonials</a>
+          #blogBlog</a>
+          #contactFree Consultation</a>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-async function login() {
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-wrap">
+      <div>
+        <div class="badge">🎓 Trusted guidance, tailored to you</div>
+        <h1>Turn Your Study Abroad Plan into a Real Offer</h1>
+        <p>Get honest, personalized support—choose your destination, shortlist courses, and submit strong applications without stress.</p>
+        <div class="actions">
+          #contactBook Free Call</a>
+          <destinationsExplore Destinations →</a>
+        </div>
+        <p class="form-help">No fees for counseling. Transparent process and timelines.</p>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1200&t&fit=crop
+      </div>
+    </div>
+  </section>
 
-    const hashedPassword = await hashPassword(password);
+  <!-- Destinations -->
+  <section id="destinations">
+    <div class="container">
+      <div class="section-head">
+        <h2>Popular Study Destinations</h2>
+        #contactNeed help choosing? →</a>
+      </div>
+      <div class="grid">
+        <!-- Card -->
+        <article class="card" aria-labelledby="dest-uk">
+          <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=1200&auto=format&fit=crop" alt class="body">
+            <h3 id="dest-uk">United Kingdom</h3>
+            <p class="chip">Scholarships • Post-study work • Top universities</p>
+          </div>
+        </article>
 
-    // Compare hashed password with stored hash
-    const storedHash = '17ea429e55ddbe65a1e05f66ea70851ad28e5612448f735a1867c2106eb5ae4a'; // hash of "***71"
-    if (username === 'tryhackme' && hashedPassword === storedHash) {
-        localStorage.setItem('loggedIn', 'true');
-        window.location.href = 'homepage.html';
-    } else {
-        alert('Invalid credentials');
+        <article class="card" aria-labelledby="dest-can">
+          <img src="https://images.unsplash.com/photo-1519680772-8b9b8ed9a121?q=80&w=120mat&fit=crop
+          <div class="body">
+            <h3 id="dest-can">Canada</h3>
+            <p class="chip">Co-ops • Friendly visa policies • Diverse campuses</p>
+          </div>
+        </article>
+
+        <article class="card" aria-labelledby="dest-aus">
+          <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=auto=format&fit=crop
+          <div class="body">
+            <h3 id="dest-aus">Australia</h3>
+            <p class="chip">High employability • Great lifestyle • PSW rights</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2>What We Help With</h2>
+        #contactTalk to an advisor →</a>
+      </div>
+      <div class="list" role="list">
+        <div class="li" role="listitem">
+          <i>1</i>
+          <div>
+            <strong>Course & University Shortlisting</strong>
+            <p class="form-help">Find best-fit programs based on your profile, goals, and budget.</p>
+          </div>
+        </div>
+        <div class="li" role="listitem">
+          <i>2</i>
+          <div>
+            <strong>Application Guidance</strong>
+            <p class="form-help">Checklist, timelines, SOP review, and submission support.</p>
+          </div>
+        </div>
+        <div class="li" role="listitem">
+          <i>3</i>
+          <div>
+            <strong>Visa & Health Cover</strong>
+            <p class="form-help">Documentation, forms, and compliant coverage options.</p>
+          </div>
+        </div>
+        <div class="li" role="listitem">
+          <i>4</i>
+          <div>
+            <strong>Pre-Departure & Arrival</strong>
+            <p class="form-help">Accommodation tips, packing lists, and arrival orientation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <h2>Student Stories</h2>
+        #contactStart your journey →</a>
+      </div>
+      <div class="grid">
+        <div class="testimonial">
+          <p class="quote">“Everything felt clear, from shortlisting to visa. The team was supportive and fast.”</p>
+          <p class="author">— Aisha, MSc Data Science (UK)</p>
+        </div>
+        <div class="testimonial">
+          <p class="quote">“They helped me pick the right course and navigate deadlines without panic.”</p>
+          <p class="author">— Marco, BEng Mechanical (Canada)</p>
+        </div>
+        <div class="testimonial">
+          <p class="quote">“I appreciated the honest advice and realistic timelines. No surprises.”</p>
+          <p class="author">— Priya, MBA (Australia)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section id="blog">
+    <div class="container">
+      <div class="section-head">
+        <h2>Latest Guides</h2>
+        #blogView all →</a>
+      </div>
+      <div class="grid">
+        <article class="card blog-card">
+          <div class="body">
+            <h3>How to Build a Strong SOP</h3>
+            <p class="meta">5 min read • Admissions</p>
+            <p>Structure, examples, and common pitfalls to avoid in your Statement of Purpose.</p>
+            #Read more →</a>
+          </div>
+        </article>
+        <article class="card blog-card">
+          <div class="body">
+            <h3>Scholarship Search: Where to Start</h3>
+            <p class="meta">6 min read • Funding</p>
+            <p>Tips and databases to find scholarships that match your profile and destination.</p>
+            #Read more →</a>
+          </div>
+        </article>
+        <article class="card blog-card">
+          <div class="body">
+            <h3>Pre‑Departure Checklist</h3>
+            <p class="meta">4 min read • Prep</p>
+            <p>Documents, packing, banking, and SIM cards—everything to handle before you fly.</p>
+            #Read more →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <h2 id="contact-title">Get a Free Consultation</h2>
+      <p class="form-help">Leave your details and we’ll contact you within 24–48 hours.</p>
+
+      <div class="contact">
+        <form id="contactForm" novalidate>
+          <div class="full">
+            <label for="name">Full Name</label>
+            <input id="name" name="name" type="text" placeholder="Jane Doe" required aria-required="true" />
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="jane@example.com" required aria-required="true" />
+          </div>
+
+          <div>
+            <label for="phone">Mobile Number</label>
+            <input id="phone" name="phone" type="tel" placeholder="+44 7000 000000" />
+          </div>
+
+          <div>
+            <label for="destination">Preferred Destination</label>
+            <select id="destination" name="destination">
+              <option value="">Select</option>
+              <option>United Kingdom</option>
+              <option>Canada</option>
+              <option>Australia</option>
+              <option>United States</option>
+              <option>New Zealand</option>
+              <option>Ireland</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="intake">Preferred Intake</label>
+            <select id="intake" name="intake">
+              <option value="">Select</option>
+              <option>Jan/Feb</option>
+              <option>May/Jun</option>
+              <option>Sep/Oct</option>
+            </select>
+          </div>
+
+          <div class="full">
+            <label for="message">Your Goals / Questions</label>
+            <textarea id="message" name="message" placeholder="Tell us about your study plans…"></textarea>
+          </div>
+
+          <div class="full">
+            <button type="submit" class="submit">Request Callback</button>
+            <p class="form-help" id="formStatus" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+      <p class="form-help">By submitting, you agree to our #Privacy Policy</a> and <Terms</a>.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <strong>Your Consultancy</strong>
+        <p>Better futures start with clear guidance. We help you choose, apply, and arrive with confidence.</p>
+      </div>
+      <div>
+        <strong>Resources</strong><br />
+        #blogBlog</a><br />
+        #Scholarships</a><br />
+        #Events</a>
+      </div>
+      <div>
+        <strong>Company</strong><br />
+        #About</a><br />
+        #contactContact</a><br />
+        #Careers</a>
+      </div>
+    </div>
+    <div class="container" style="margin-top:18px">
+      <small>© <span id="year"></span> Your Consultancy. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <!-- Minimal JS -->
+  <script>
+    // Accessible nav toggle
+    function toggleMenu(){
+      const nav = document.getElementById('navlinks');
+      const isOpen = getComputedStyle(nav).display !== 'none';
+      nav.style.display = isOpen ? 'none' : 'flex';
     }
-}
-</script>
+
+    // Simple client-side form validation + demo submission
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      status.textContent = '';
+      const data = new FormData(form);
+      const name = data.get('name')?.trim();
+      const email = data.get('email')?.trim();
+
+      if(!name || !email){
+        status.textContent = 'Please provide at least your name and a valid email.';
+        status.style.color = '#b00020';
+        return;
+      }
+
+      // TODO: Replace with your backend endpoint (fetch/POST)
+      status.textContent = 'Thanks! We will contact you shortly.';
+      status.style.color = '#086b40';
+      form.reset();
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Schema.org for organization (basic) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Your Consultancy",
+    "url": "https://www.example.com/",
+    "logo": "https://www.example.com/logo.png",
+    "sameAs": [],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "hello@example.com",
+      "telephone": "+44 7000 000000"
+    }]
+  }
+  </script>
 </body>
-</html>
- 
