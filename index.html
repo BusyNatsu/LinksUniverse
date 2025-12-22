@@ -51,7 +51,7 @@ async function hashPassword(password) {
 }
 
 async function login() {
-    const username = document.getElementById('username').value.trim().toLowercase();
+    const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
     const hashedPassword = await hashPassword(password);
