@@ -36,7 +36,7 @@
 </head>
 <body>
 <div class="login-container">
-    <h2>Welcome To MyLinksUniverse5 please login using the provided credentials</h2>
+    <h2>Welcome To MyLinksUniverse6 please login using the provided credentials</h2>
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
     <button onclick="login()">Login</button>
@@ -51,7 +51,7 @@ async function hashPassword(password) {
 }
 
 async function login() {
-    const username = document.getElementById('username').value;
+    const username = document.getElementById('username').value.trim().toLowerCase();
     const password = document.getElementById('password').value;
 
     const hashedPassword = await hashPassword(password);
